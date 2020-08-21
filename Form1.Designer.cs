@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSpace));
             this.PnlGame = new System.Windows.Forms.Panel();
+            this.btncontinue = new System.Windows.Forms.Button();
+            this.lblinstruct2 = new System.Windows.Forms.Label();
             this.lblinstruct1 = new System.Windows.Forms.Label();
             this.BtnStart = new System.Windows.Forms.Button();
             this.PictureMain = new System.Windows.Forms.PictureBox();
-            this.lblinstruct2 = new System.Windows.Forms.Label();
-            this.btncontinue = new System.Windows.Forms.Button();
+            this.TmrObstacle = new System.Windows.Forms.Timer(this.components);
+            this.TmrShip = new System.Windows.Forms.Timer(this.components);
             this.PnlGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureMain)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +55,29 @@
             this.PnlGame.Size = new System.Drawing.Size(750, 400);
             this.PnlGame.TabIndex = 0;
             this.PnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
+            // 
+            // btncontinue
+            // 
+            this.btncontinue.Font = new System.Drawing.Font("Myriad Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncontinue.ForeColor = System.Drawing.Color.Red;
+            this.btncontinue.Location = new System.Drawing.Point(297, 243);
+            this.btncontinue.Name = "btncontinue";
+            this.btncontinue.Size = new System.Drawing.Size(167, 41);
+            this.btncontinue.TabIndex = 4;
+            this.btncontinue.Text = "Continue";
+            this.btncontinue.UseVisualStyleBackColor = true;
+            this.btncontinue.Click += new System.EventHandler(this.btncontinue_Click);
+            // 
+            // lblinstruct2
+            // 
+            this.lblinstruct2.AutoSize = true;
+            this.lblinstruct2.BackColor = System.Drawing.Color.White;
+            this.lblinstruct2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinstruct2.Location = new System.Drawing.Point(70, 191);
+            this.lblinstruct2.Name = "lblinstruct2";
+            this.lblinstruct2.Size = new System.Drawing.Size(634, 21);
+            this.lblinstruct2.TabIndex = 3;
+            this.lblinstruct2.Text = "Through the moving obstacles, reach the top of the panel to get a point.";
             // 
             // lblinstruct1
             // 
@@ -88,29 +114,6 @@
             this.PictureMain.TabIndex = 0;
             this.PictureMain.TabStop = false;
             // 
-            // lblinstruct2
-            // 
-            this.lblinstruct2.AutoSize = true;
-            this.lblinstruct2.BackColor = System.Drawing.Color.White;
-            this.lblinstruct2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblinstruct2.Location = new System.Drawing.Point(70, 191);
-            this.lblinstruct2.Name = "lblinstruct2";
-            this.lblinstruct2.Size = new System.Drawing.Size(634, 21);
-            this.lblinstruct2.TabIndex = 3;
-            this.lblinstruct2.Text = "Through the moving obstacles, reach the top of the panel to get a point.";
-            // 
-            // btncontinue
-            // 
-            this.btncontinue.Font = new System.Drawing.Font("Myriad Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncontinue.ForeColor = System.Drawing.Color.Red;
-            this.btncontinue.Location = new System.Drawing.Point(297, 243);
-            this.btncontinue.Name = "btncontinue";
-            this.btncontinue.Size = new System.Drawing.Size(167, 41);
-            this.btncontinue.TabIndex = 4;
-            this.btncontinue.Text = "Continue";
-            this.btncontinue.UseVisualStyleBackColor = true;
-            this.btncontinue.Click += new System.EventHandler(this.btncontinue_Click);
-            // 
             // FrmSpace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,6 +137,8 @@
         private System.Windows.Forms.Label lblinstruct1;
         private System.Windows.Forms.Label lblinstruct2;
         private System.Windows.Forms.Button btncontinue;
+        private System.Windows.Forms.Timer TmrObstacle;
+        private System.Windows.Forms.Timer TmrShip;
     }
 }
 

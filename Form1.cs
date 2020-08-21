@@ -12,6 +12,12 @@ namespace Space_Race
 {
     public partial class FrmSpace : Form
     {
+
+        bool left, right;
+        int score, lives = 5;
+        string move;
+
+
         public FrmSpace()
         {
             InitializeComponent();
