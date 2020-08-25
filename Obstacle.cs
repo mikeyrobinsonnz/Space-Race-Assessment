@@ -7,25 +7,38 @@ using System.Drawing;
 
 namespace Space_Race
 {
-    class Obstacle
+    class Planet
     {
         // declare fields to use in the class
         public int x, y, width, height;//variables for the rectangle
-        public Image obstacleImage;//variable for the planet's image
+        public Image planetImage;//variable for the planet's image
+        
 
-        public Rectangle obstacleRec;//variable for a rectangle to place our image in
+        public Rectangle planetRec;//variable for a rectangle to place our image in
         public int score;
+        private int spacing;
         //Create a constructor (initialises the values of the fields)
-        public Obstacle()
+
+        public Planet()
         {
+            x = spacing;
             x = 10;
             y = 10;
-            width = 20;
-            height = 20;
+            width = 30;
+            height = 30;
             //obstalceImage contains the obstacle.png image
-            obstacleImage = Properties.Resources.character1;
-            obstacleRec = new Rectangle(x, y, width, height);
+            planetImage = Properties.Resources.planet1;
+            planetRec = new Rectangle(x, y, width, height);
+
         }
+
+        // Methods for the Asteroid class
+        public void DrawAsteroid(Graphics g)
+        {
+            planetRec = new Rectangle(x, y, width, height);
+            g.DrawImage(planetImage, planetRec);
+        }
+
 
     }
 }
