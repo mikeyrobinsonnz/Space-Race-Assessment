@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
+using System.Threading.Tasks;
+
 
 namespace Space_Race
 {
@@ -32,9 +33,15 @@ namespace Space_Race
 
         }
 
-        // Methods for the Asteroid class
-        public void DrawAsteroid(Graphics g)
+        public Planet(int x)
         {
+            this.x = x;
+        }
+
+        // Methods for the Asteroid class
+        public void DrawPlanet(Graphics g)
+        {
+
             planetRec = new Rectangle(x, y, width, height);
             g.DrawImage(planetImage, planetRec);
         }

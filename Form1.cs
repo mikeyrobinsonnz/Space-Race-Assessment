@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,14 +14,16 @@ namespace Space_Race
     {
 
         Graphics g; //declare a graphics object called g
-        Planet planet1= new Planet(); //create the object, planet
-        
+        // declare space for an array of 7 objects called planet 
+        Planet[] planet = new Planet[7];
+
+
 
 
         bool left, right;
         int score, lives = 5;
         string move;
-        
+
 
 
         public FrmSpace()
@@ -30,10 +32,10 @@ namespace Space_Race
             for (int i = 0; i < 7; i++)
             {
                 int x = 10 + (i * 75);
-                Planet[i] =new Planet(x);
-                //call the Asteroid's class's drawAsteroid method to draw the images
-                .DrawPlanet(g);
+                planet[i] = new Planet(x);
             }
+
+
 
             PictureMain.Visible = true;
             BtnStart.Visible = true;
@@ -49,8 +51,13 @@ namespace Space_Race
         {
             //get the graphics used to paint on the panel control
             g = e.Graphics;
-            // declare space for an array of 7 objects called asteroid 
-            Planet[] planet1 = new Planet[7];
+            for (int i = 0; i < 7; i++)
+         
+                //call the Planet class's drawPlanet method to draw the images
+                planet[i].DrawPlanet(g);
+            
+
+
 
 
         }
