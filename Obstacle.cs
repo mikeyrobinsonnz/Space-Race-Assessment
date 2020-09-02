@@ -18,33 +18,38 @@ namespace Space_Race
         public Rectangle planetRec;//variable for a rectangle to place our image in
         public int score;
         private int spacing;
-        //Create a constructor (initialises the values of the fields)
 
         public Planet()
         {
+        }
+
+        //Create a constructor (initialises the values of the fields)
+
+        public Planet(int spacing)
+        {
             x = spacing;
-            x = 10;
             y = 10;
             width = 30;
             height = 30;
             //obstalceImage contains the obstacle.png image
-            planetImage = Properties.Resources.planet1;
+            planetImage = Image.FromFile("planet1.png");
             planetRec = new Rectangle(x, y, width, height);
 
         }
 
-        public Planet(int x)
-        {
-            this.x = x;
-        }
 
-        // Methods for the Asteroid class
         public void DrawPlanet(Graphics g)
         {
-
-            planetRec = new Rectangle(x, y, width, height);
             g.DrawImage(planetImage, planetRec);
         }
+
+        public void MovePlanet()
+        {
+            y += 10;
+
+            planetRec.Location = new Point(x, y);
+        }
+
 
 
     }

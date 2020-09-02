@@ -36,7 +36,7 @@
             this.lblinstruct1 = new System.Windows.Forms.Label();
             this.BtnStart = new System.Windows.Forms.Button();
             this.PictureMain = new System.Windows.Forms.PictureBox();
-            this.TmrObstacle = new System.Windows.Forms.Timer(this.components);
+            this.TmrPlanet = new System.Windows.Forms.Timer(this.components);
             this.TmrShip = new System.Windows.Forms.Timer(this.components);
             this.PnlGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureMain)).BeginInit();
@@ -114,6 +114,11 @@
             this.PictureMain.TabIndex = 0;
             this.PictureMain.TabStop = false;
             // 
+            // TmrPlanet
+            // 
+            this.TmrPlanet.Enabled = true;
+            this.TmrPlanet.Tick += new System.EventHandler(this.TmrPlanet_Tick);
+            // 
             // FrmSpace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,7 +142,7 @@
         private System.Windows.Forms.Label lblinstruct1;
         private System.Windows.Forms.Label lblinstruct2;
         private System.Windows.Forms.Button btncontinue;
-        private System.Windows.Forms.Timer TmrObstacle;
+        private System.Windows.Forms.Timer TmrPlanet;
         private System.Windows.Forms.Timer TmrShip;
     }
 }

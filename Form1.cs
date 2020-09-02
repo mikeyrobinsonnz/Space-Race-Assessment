@@ -14,22 +14,21 @@ namespace Space_Race
     {
 
         Graphics g; //declare a graphics object called g
-        // declare space for an array of 7 objects called planet 
-        Planet[] planet = new Planet[7];
+        // declare space for an array of 10 objects called planet 
+        Planet[] planet = new Planet[10];
+        Random yspeed = new Random();
 
 
 
 
-        bool left, right;
-        int score, lives = 5;
-        string move;
+
 
 
 
         public FrmSpace()
         {
             InitializeComponent();
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 10; i++)
             {
                 int x = 10 + (i * 75);
                 planet[i] = new Planet(x);
@@ -51,13 +50,12 @@ namespace Space_Race
         {
             //get the graphics used to paint on the panel control
             g = e.Graphics;
-            for (int i = 0; i < 7; i++)
-         
+            //call the Planet class's DrawPlanet method to draw the image planet1 
+            for (int i = 0; i < 10; i++)
+            {
                 //call the Planet class's drawPlanet method to draw the images
                 planet[i].DrawPlanet(g);
-            
-
-
+            }
 
 
         }
@@ -70,8 +68,27 @@ namespace Space_Race
             lblinstruct2.Visible = true;
             PnlGame.Visible = true;
             btncontinue.Visible = true;
+            TmrPlanet.Enabled = false;
          
                
+        }
+
+        private void TmrPlanet_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                planet[i].MovePlanet();
+
+                //if a planet reaches the bottom of the Game Area reposition it at the top
+                if (planet[i].y >= PnlGame.Height)
+                {
+                    planet[i].y = 10;
+                }
+
+
+            }
+            PnlGame.Invalidate();//makes the paint event fire to redraw the panel
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -85,9 +102,10 @@ namespace Space_Race
             lblinstruct2.Visible = false;
             PnlGame.Visible = true;
             btncontinue.Visible = false;
-           
+            TmrPlanet.Enabled = true;
 
-               
+
+
 
 
         }
