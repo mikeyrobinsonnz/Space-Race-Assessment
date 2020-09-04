@@ -45,7 +45,7 @@ namespace Space_Race
 
         public void MovePlanet()
         {
-            y += 10;
+            y += 5;
 
             planetRec.Location = new Point(x, y);
         }

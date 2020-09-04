@@ -17,8 +17,10 @@ namespace Space_Race
         // declare space for an array of 10 objects called planet 
         Planet[] planet = new Planet[10];
         Random yspeed = new Random();
+        Spaceship spaceship = new Spaceship();
 
-
+        bool left, right;
+        string move;
 
 
 
@@ -53,8 +55,14 @@ namespace Space_Race
             //call the Planet class's DrawPlanet method to draw the image planet1 
             for (int i = 0; i < 10; i++)
             {
+                // generate a random number from 5 to 30 and put it in rndmspeed
+                int rndmspeed = yspeed.Next(5, 30);
+                planet[i].y += rndmspeed;
+
                 //call the Planet class's drawPlanet method to draw the images
                 planet[i].DrawPlanet(g);
+
+                spaceship.DrawSpaceship(g);
             }
 
 
@@ -96,6 +104,35 @@ namespace Space_Race
 
         }
 
+        private void FrmSpace_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = true; }
+            if (e.KeyData == Keys.Right) { right = true; }
+
+        }
+
+        private void FrmSpace_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = false; }
+            if (e.KeyData == Keys.Right) { right = false; }
+
+        }
+
+        private void TmrShip_Tick(object sender, EventArgs e)
+        {
+            if (right) // if right arrow key pressed
+            {
+                move = "right";
+                spaceship.MoveSpaceship(move);
+            }
+            if (left) // if left arrow key pressed
+            {
+                move = "left";
+                spaceship.MoveSpaceship(move);
+            }
+
+        }
+
         private void btncontinue_Click(object sender, EventArgs e)
         {
             lblinstruct1.Visible = false;
@@ -103,6 +140,7 @@ namespace Space_Race
             PnlGame.Visible = true;
             btncontinue.Visible = false;
             TmrPlanet.Enabled = true;
+            
 
 
 

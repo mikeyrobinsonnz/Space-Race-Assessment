@@ -38,6 +38,10 @@
             this.PictureMain = new System.Windows.Forms.PictureBox();
             this.TmrPlanet = new System.Windows.Forms.Timer(this.components);
             this.TmrShip = new System.Windows.Forms.Timer(this.components);
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblScore = new System.Windows.Forms.Label();
+            this.txtScore = new System.Windows.Forms.TextBox();
             this.PnlGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureMain)).BeginInit();
             this.SuspendLayout();
@@ -119,18 +123,69 @@
             this.TmrPlanet.Enabled = true;
             this.TmrPlanet.Tick += new System.EventHandler(this.TmrPlanet_Tick);
             // 
+            // TmrShip
+            // 
+            this.TmrShip.Enabled = true;
+            this.TmrShip.Interval = 50;
+            this.TmrShip.Tick += new System.EventHandler(this.TmrShip_Tick);
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(805, 73);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.TabIndex = 1;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(823, 35);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(55, 20);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "Name";
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.Location = new System.Drawing.Point(823, 169);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(56, 20);
+            this.lblScore.TabIndex = 3;
+            this.lblScore.Text = "Score";
+            // 
+            // txtScore
+            // 
+            this.txtScore.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScore.Location = new System.Drawing.Point(805, 216);
+            this.txtScore.Name = "txtScore";
+            this.txtScore.Size = new System.Drawing.Size(100, 27);
+            this.txtScore.TabIndex = 4;
+            this.txtScore.Text = "0";
+            this.txtScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FrmSpace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(934, 461);
+            this.Controls.Add(this.txtScore);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.PnlGame);
+            this.KeyPreview = true;
             this.Name = "FrmSpace";
             this.Text = "Space Race";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmSpace_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmSpace_KeyUp);
             this.PnlGame.ResumeLayout(false);
             this.PnlGame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureMain)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,6 +199,10 @@
         private System.Windows.Forms.Button btncontinue;
         private System.Windows.Forms.Timer TmrPlanet;
         private System.Windows.Forms.Timer TmrShip;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.TextBox txtScore;
     }
 }
 
