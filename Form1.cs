@@ -21,6 +21,7 @@ namespace Space_Race
 
         bool left, right;
         string move;
+        int score, lives;
 
 
 
@@ -44,6 +45,7 @@ namespace Space_Race
             lblinstruct2.Visible = false;
             PnlGame.Visible = true;
             btncontinue.Visible = false;
+            TmrPlanet.Enabled = false;
             
 
         }
@@ -86,10 +88,21 @@ namespace Space_Race
             for (int i = 0; i < 10; i++)
             {
                 planet[i].MovePlanet();
+                if (spaceship.spaceRec.IntersectsWith(planet[i].planetRec))
+                {
+                    //reset planet[i] back to top of panel
+                    planet[i].y = 30; // set  y value of planetRec
+                    lives -= 1;// lose a life
+                    txtLives.Text = lives.ToString();// display number of lives
+                    CheckLives();
+                }
+
 
                 //if a planet reaches the bottom of the Game Area reposition it at the top
                 if (planet[i].y >= PnlGame.Height)
                 {
+                    score += 1;//update the score
+                    txtScore.Text = score.ToString();// display score
                     planet[i].y = 10;
                 }
 
@@ -133,6 +146,16 @@ namespace Space_Race
 
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void FrmSpace_Load(object sender, EventArgs e)
+        {
+            lives = int.Parse(txtLives.Text);// pass lives entered from textbox to lives variable
+        }
+
         private void btncontinue_Click(object sender, EventArgs e)
         {
             lblinstruct1.Visible = false;
@@ -147,5 +170,18 @@ namespace Space_Race
 
 
         }
+
+        private void CheckLives()
+        {
+            if (lives == 0)
+            {
+                TmrPlanet.Enabled = false;
+                TmrShip.Enabled = false;
+                MessageBox.Show("Game Over");
+                
+
+            }
+        }
+
     }
 }

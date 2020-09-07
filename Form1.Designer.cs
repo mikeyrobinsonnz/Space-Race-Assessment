@@ -42,13 +42,19 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.txtScore = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtLives = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PnlGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureMain)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlGame
             // 
             this.PnlGame.BackColor = System.Drawing.SystemColors.Desktop;
+            this.PnlGame.Controls.Add(this.menuStrip1);
             this.PnlGame.Controls.Add(this.btncontinue);
             this.PnlGame.Controls.Add(this.lblinstruct2);
             this.PnlGame.Controls.Add(this.lblinstruct1);
@@ -111,7 +117,7 @@
             // PictureMain
             // 
             this.PictureMain.Image = ((System.Drawing.Image)(resources.GetObject("PictureMain.Image")));
-            this.PictureMain.Location = new System.Drawing.Point(3, 0);
+            this.PictureMain.Location = new System.Drawing.Point(0, 23);
             this.PictureMain.Name = "PictureMain";
             this.PictureMain.Size = new System.Drawing.Size(750, 400);
             this.PictureMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -158,32 +164,80 @@
             // 
             // txtScore
             // 
+            this.txtScore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.txtScore.Enabled = false;
             this.txtScore.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtScore.Location = new System.Drawing.Point(805, 216);
+            this.txtScore.HideSelection = false;
+            this.txtScore.Location = new System.Drawing.Point(805, 204);
             this.txtScore.Name = "txtScore";
             this.txtScore.Size = new System.Drawing.Size(100, 27);
-            this.txtScore.TabIndex = 4;
+            this.txtScore.TabIndex = 1;
             this.txtScore.Text = "0";
             this.txtScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(829, 312);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Lives";
+            // 
+            // txtLives
+            // 
+            this.txtLives.BackColor = System.Drawing.Color.Lime;
+            this.txtLives.Enabled = false;
+            this.txtLives.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLives.Location = new System.Drawing.Point(805, 346);
+            this.txtLives.Name = "txtLives";
+            this.txtLives.Size = new System.Drawing.Size(100, 20);
+            this.txtLives.TabIndex = 2;
+            this.txtLives.Text = "5";
+            this.txtLives.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(750, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // FrmSpace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 461);
+            this.Controls.Add(this.txtLives);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.PnlGame);
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmSpace";
             this.Text = "Space Race";
+            this.Load += new System.EventHandler(this.FrmSpace_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmSpace_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmSpace_KeyUp);
             this.PnlGame.ResumeLayout(false);
             this.PnlGame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureMain)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,6 +257,10 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.TextBox txtScore;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtLives;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

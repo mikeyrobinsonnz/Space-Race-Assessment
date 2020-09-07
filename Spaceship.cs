@@ -40,10 +40,10 @@ namespace Space_Race
 
             if (move == "right")
             {
-                if (spaceRec.Location.X > 450) // is spaceship within 50 of right side
+                if (spaceRec.Location.X > 700) // is spaceship within 50 of right side
                 {
 
-                    x = 450;
+                    x = 700;
                     spaceRec.Location = new Point(x, y);
                 }
                 else
