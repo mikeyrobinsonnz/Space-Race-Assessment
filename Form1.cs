@@ -46,7 +46,8 @@ namespace Space_Race
             PnlGame.Visible = true;
             btncontinue.Visible = false;
             TmrPlanet.Enabled = false;
-            
+            TmrPlanetFast.Enabled = false;
+
 
         }
 
@@ -79,8 +80,9 @@ namespace Space_Race
             PnlGame.Visible = true;
             btncontinue.Visible = true;
             TmrPlanet.Enabled = false;
-         
-               
+            TmrPlanetFast.Enabled = false;
+
+
         }
 
         private void TmrPlanet_Tick(object sender, EventArgs e)
@@ -88,6 +90,7 @@ namespace Space_Race
             for (int i = 0; i < 10; i++)
             {
                 planet[i].MovePlanet();
+                
                 if (spaceship.spaceRec.IntersectsWith(planet[i].planetRec))
                 {
                     //reset planet[i] back to top of panel
@@ -96,7 +99,7 @@ namespace Space_Race
                     txtLives.Text = lives.ToString();// display number of lives
                     CheckLives();
                 }
-
+                
 
                 //if a planet reaches the bottom of the Game Area reposition it at the top
                 if (planet[i].y >= PnlGame.Height)
@@ -148,7 +151,7 @@ namespace Space_Race
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            
         }
 
         private void FrmSpace_Load(object sender, EventArgs e)
@@ -163,13 +166,51 @@ namespace Space_Race
             PnlGame.Visible = true;
             btncontinue.Visible = false;
             TmrPlanet.Enabled = true;
-            
+            TmrPlanetFast.Enabled = false;
+            TmrShip.Enabled = true;
+            score = 0;
+            txtScore.Text = score.ToString();
+            lives = int.Parse(txtLives.Text);// pass lives entered from textbox to lives variable
+
+
+
 
 
 
 
 
         }
+
+        private void TmrPlanetFast_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                planet[i].MovePlanet();
+
+                if (spaceship.spaceRec.IntersectsWith(planet[i].planetRec))
+                {
+                    //reset planet[i] back to top of panel
+                    planet[i].y = 30; // set  y value of planetRec
+                    lives -= 1;// lose a life
+                    txtLives.Text = lives.ToString();// display number of lives
+                    CheckLives();
+                }
+
+
+                //if a planet reaches the bottom of the Game Area reposition it at the top
+                if (planet[i].y >= PnlGame.Height)
+                {
+                    score += 1;//update the score
+                    txtScore.Text = score.ToString();// display score
+                    planet[i].y = 10;
+                }
+
+
+            }
+            PnlGame.Invalidate();//makes the paint event fire to redraw the panel
+
+        }
+    
 
         private void CheckLives()
         {
@@ -178,10 +219,22 @@ namespace Space_Race
                 TmrPlanet.Enabled = false;
                 TmrShip.Enabled = false;
                 MessageBox.Show("Game Over");
-                
+
+
+            }
+
+
+        }
+        private void Checkscore()
+        {
+            if (score == 50)
+            {
+                TmrPlanetFast.Enabled = true;
+                TmrPlanet.Enabled = false;
+               
+
 
             }
         }
-
     }
 }

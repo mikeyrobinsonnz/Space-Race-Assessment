@@ -46,6 +46,7 @@
             this.txtLives = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TmrPlanetFast = new System.Windows.Forms.Timer(this.components);
             this.PnlGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureMain)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -85,9 +86,9 @@
             this.lblinstruct2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblinstruct2.Location = new System.Drawing.Point(70, 191);
             this.lblinstruct2.Name = "lblinstruct2";
-            this.lblinstruct2.Size = new System.Drawing.Size(634, 21);
+            this.lblinstruct2.Size = new System.Drawing.Size(633, 21);
             this.lblinstruct2.TabIndex = 3;
-            this.lblinstruct2.Text = "Through the moving obstacles, reach the top of the panel to get a point.";
+            this.lblinstruct2.Text = "Through the moving obstacles, dodge the falling asteroids to get a point";
             // 
             // lblinstruct1
             // 
@@ -106,7 +107,7 @@
             // 
             this.BtnStart.BackColor = System.Drawing.Color.White;
             this.BtnStart.Font = new System.Drawing.Font("Stencil", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnStart.Location = new System.Drawing.Point(300, 300);
+            this.BtnStart.Location = new System.Drawing.Point(297, 321);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(164, 76);
             this.BtnStart.TabIndex = 1;
@@ -187,7 +188,7 @@
             // 
             // txtLives
             // 
-            this.txtLives.BackColor = System.Drawing.Color.Lime;
+            this.txtLives.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.txtLives.Enabled = false;
             this.txtLives.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLives.Location = new System.Drawing.Point(805, 346);
@@ -213,6 +214,12 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // TmrPlanetFast
+            // 
+            this.TmrPlanetFast.Enabled = true;
+            this.TmrPlanetFast.Interval = 50;
+            this.TmrPlanetFast.Tick += new System.EventHandler(this.TmrPlanetFast_Tick);
             // 
             // FrmSpace
             // 
@@ -251,7 +258,6 @@
         private System.Windows.Forms.Label lblinstruct1;
         private System.Windows.Forms.Label lblinstruct2;
         private System.Windows.Forms.Button btncontinue;
-        private System.Windows.Forms.Timer TmrPlanet;
         private System.Windows.Forms.Timer TmrShip;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblName;
@@ -261,6 +267,8 @@
         private System.Windows.Forms.TextBox txtLives;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        public System.Windows.Forms.Timer TmrPlanet;
+        private System.Windows.Forms.Timer TmrPlanetFast;
     }
 }
 
